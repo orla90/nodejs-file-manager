@@ -1,6 +1,10 @@
 import { createInterface } from 'readline';
 import { EventEmitter } from 'events';
-import { handleReadline } from './handlers/index.js'
+import { chdir } from 'process';
+import { homedir } from 'os';
+import { handleReadline } from './utils/index.js'
+
+chdir(homedir());
 
 const username = process.argv
   .slice(2)
@@ -20,16 +24,15 @@ eventEmitter.on('exit', () => {
   exit();
 })
 
-
 rl.on('line', (input) => handleReadline(input, eventEmitter))
   .on("SIGINT", () => exit())
   .on('ls', () => eventEmitter.emit('ls'))
 
-
 username && console.log(`Welcome to the File Manager, ${ username.charAt(0).toUpperCase() + username.slice(1) }!`);
+console.log(`You are currently in ${process.cwd()}`);
 
 const exit = () => {
   console.log(`Thank you for using File Manager, ${ username.charAt(0).toUpperCase() + username.slice(1) }, goodbye!`);
   rl.close();
-  process.exit(0);
+  process.exit();
 }
