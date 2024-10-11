@@ -4,3 +4,8 @@ export { default as handleLs } from './handlers/ls.js';
 export { default as handleUp } from './handlers/up.js';
 export { default as handleCd } from './handlers/cd.js';
 export { default as handleCat } from './handlers/cat.js';
+export { default as handleAdd } from './handlers/add.js';
+export { default as handleRn } from './handlers/rn.js';
+export { default as handleCp } from './handlers/cp.js';
+export { default as handleMv } from './handlers/mv.js';
+

@@ -3,6 +3,10 @@ import { handleFuncErr,
   handleUp,
   handleCd,
   handleCat,
+  handleAdd,
+  handleRn,
+  handleCp,
+  handleMv,
  } from '../index.js'
 
 const handleReadline = (input, eventEmitter) => {
@@ -23,6 +27,18 @@ const handleReadline = (input, eventEmitter) => {
       break;
     case 'cat':
       handleFuncErr(handleCat, ...args);
+      break;
+    case 'add':
+      handleFuncErr(handleAdd, ...args);
+      break;
+    case 'rn':
+      handleFuncErr(handleRn, ...args);
+      break;
+    case 'cp':
+      handleFuncErr(handleCp, ...args);
+      break;
+    case 'mv':
+      handleFuncErr(handleMv, ...args);
       break;
     default: 
       console.log('Invalid input.');
