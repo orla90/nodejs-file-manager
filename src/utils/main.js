@@ -7,7 +7,10 @@ import { handleFuncErr,
   handleRn,
   handleCp,
   handleMv,
- } from '../index.js'
+  handleRm,
+  getOsInfo,
+  handleHash,
+ } from './index.js'
 
 const handleReadline = (input, eventEmitter) => {
   const args = input.split(' ').slice(1);
@@ -39,6 +42,15 @@ const handleReadline = (input, eventEmitter) => {
       break;
     case 'mv':
       handleFuncErr(handleMv, ...args);
+      break;
+    case 'rm':
+      handleFuncErr(handleRm, ...args);
+      break;
+    case 'os':
+      handleFuncErr(getOsInfo, ...args);
+      break;
+    case 'hash':
+      handleFuncErr(handleHash, ...args);
       break;
     default: 
       console.log('Invalid input.');

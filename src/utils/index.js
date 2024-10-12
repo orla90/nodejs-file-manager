@@ -1,4 +1,4 @@
-export { default as handleReadline } from './handlers/readline.js';
+export { default as handleReadline } from './main.js';
 export { default as handleFuncErr } from './handlers/wrapper.js';
 export { default as handleLs } from './handlers/ls.js';
 export { default as handleUp } from './handlers/up.js';
@@ -8,4 +8,6 @@ export { default as handleAdd } from './handlers/add.js';
 export { default as handleRn } from './handlers/rn.js';
 export { default as handleCp } from './handlers/cp.js';
 export { default as handleMv } from './handlers/mv.js';
-
+export { default as handleRm } from './handlers/rm.js';
+export { default as handleHash } from './handlers/hash.js';
+export { default as getOsInfo } from './os_utils/os.js';
