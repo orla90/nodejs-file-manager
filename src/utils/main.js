@@ -1,15 +1,16 @@
-import { handleFuncErr, 
+import { 
+  handleFuncErr, 
   handleLs, 
   handleUp,
   handleCd,
   handleCat,
   handleAdd,
   handleRn,
-  handleCp,
-  handleMv,
+  handleCpOrMv,
   handleRm,
   getOsInfo,
   handleHash,
+  handleCompressOrDecompress,
  } from './index.js'
 
 const handleReadline = (input, eventEmitter) => {
@@ -38,10 +39,8 @@ const handleReadline = (input, eventEmitter) => {
       handleFuncErr(handleRn, ...args);
       break;
     case 'cp':
-      handleFuncErr(handleCp, ...args);
-      break;
     case 'mv':
-      handleFuncErr(handleMv, ...args);
+      handleFuncErr(handleCpOrMv, ...input.split(' '));
       break;
     case 'rm':
       handleFuncErr(handleRm, ...args);
@@ -51,6 +50,10 @@ const handleReadline = (input, eventEmitter) => {
       break;
     case 'hash':
       handleFuncErr(handleHash, ...args);
+      break;
+    case 'compress':
+    case 'decompress':
+      handleFuncErr(handleCompressOrDecompress, ...input.split(' '));
       break;
     default: 
       console.log('Invalid input.');

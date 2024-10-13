@@ -1,10 +1,10 @@
-import { createReadStream, createWriteStream } from 'fs';
+import { createReadStream, createWriteStream, promises } from 'fs';
 import { resolve, parse } from 'path';
 import { pipeline } from 'stream';
 import { promisify } from 'util';
 import { ERROR_MESSAGE } from '../constants.js';
 
-const handleCp = async ([oldPath, newPath]) => {  
+const handleCpOrMv = async ([command, oldPath, newPath]) => {  
   try {
     const oldFilePath = resolve(oldPath);
     const newFilePath = resolve(newPath, parse(oldFilePath).base);
@@ -13,9 +13,10 @@ const handleCp = async ([oldPath, newPath]) => {
     const readableStream = createReadStream(oldFilePath);
     const writableStream = createWriteStream(newFilePath);
     await pipe(readableStream, writableStream);
+    if (command === 'mv') await promises.unlink(oldFilePath);
   } catch {
     console.log(ERROR_MESSAGE);
   }
 }
 
-export default handleCp;
+export default handleCpOrMv;
